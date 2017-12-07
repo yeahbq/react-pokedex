@@ -1,13 +1,13 @@
 import React from 'react';
 import Pokemon from './Pokemon'
 
-class Pager extends React.Component {
+class PokemonPager extends React.Component {
     state = { index: 1 };
   
     render() {
       return (
         <div>
-          <Pokemon id={this.state.index} />
+          <Pokemon index={this.state.index} />
   
           <button
             type="button"
@@ -33,4 +33,4 @@ class Pager extends React.Component {
     }
   }
 
-export default Pager;
+export default PokemonPager;

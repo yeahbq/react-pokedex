@@ -3,34 +3,24 @@ import React from 'react';
 class Pokemon extends React.Component {
   state = { character: null };
 
-  componentDidMount() {
-    fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${this.props.id}/`)
+  setCharacter = id => 
+    fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${id}/`)
       .then(res => res.json())
       .then(json => this.setState({ character: json }));
+
+  componentDidMount() {
+    this.setCharacter(this.props.id)
   }
 
   componentWillReceiveProps(nextProps) {
-    fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${nextProps.id}/`)
-      .then(res => res.json())
-      .then(json => this.setState({ character: json }));
+    this.setCharacter(nextProps.id)
   }
 
   render() {
     return this.state.character ? (
       <div>
         <h1>{this.state.character.name}</h1>
-        <img
-          src={this.state.character.sprites.front_default}
-          width={96}
-          height={96}
-        />
-
-        <h2>Abilities</h2>
-        <ul>
-          {this.state.character.abilities.map(ability => (
-            <li key={ability.ability.name}>{ability.ability.name}</li>
-          ))}
-        </ul>
+        <img src={this.state.character.sprites.front_default} width={96} height={96} />
       </div>
     ) : (
       <div>loading...</div>
