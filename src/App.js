@@ -4,12 +4,17 @@ import './App.css';
 // import PokemonPager from './components/PokemonPager'
 
 class FetchPokemon extends React.Component {
-  state = { character: null };
+  state = { 
+          character: null,
+          id: '' 
+          };
 
   setCharacter = id =>
     fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${id}/`)
       .then(res => res.json())
       .then(json => this.setState({ character: json }));
+
+
   
   componentDidMount() {
     this.setCharacter(this.props.id)
@@ -46,8 +51,14 @@ const Pokemon = props =>
   </div>
 
 class Pager extends React.Component {
-  state = { index: 1 };
+  state = { index: 130 };
 
+  getRandom = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  
   render() {
     return (
       <div>
@@ -71,6 +82,16 @@ class Pager extends React.Component {
             }))}
         >
           Next
+        </button>
+
+        <button
+          type="button"
+          onClick={() =>
+            this.setState(({ index }) => ({
+              index: this.getRandom(1,151)
+            }))}
+        >
+          RANDOM
         </button>
       </div>
     );
