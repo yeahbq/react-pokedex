@@ -36,7 +36,7 @@ class FetchPokemon extends React.Component {
 const Pokemon = props =>
   <div>
     <h1>{props.character.name}</h1>
-    <img
+    <img className="pokeImg"
       src={props.character.sprites.front_default}
       width={96}
       height={96}
