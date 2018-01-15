@@ -12,6 +12,10 @@ class FetchPokemon extends React.Component {
   setCharacter = id =>
     fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${id}/`)
       .then(res => res.json())
+      .catch(error => {
+        console.error('Error:', error)
+        return;
+      })
       .then(json => this.setState({ character: json }));
 
 
@@ -34,28 +38,56 @@ class FetchPokemon extends React.Component {
 }
 
 const Pokemon = props =>
-  <div>
-    <h1>{props.character.name}</h1>
-    <img className="pokeImg"
-      src={props.character.sprites.front_default}
-      width={96}
-      height={96}
-    />
+  <div className="poke-info">
+    <div className="pokemon-header">
+      <h1>{props.character.name}</h1>
+      { props.character.sprites ?
+      <img className="pokeImg" 
+        src={props.character.sprites.front_default}
+        width={96}
+        height={96}
+        alt={"Pokemon not found"}/> :
+       <div> "Sorry"</div>
+      }
+    </div>
 
-    <h2>Abilities</h2>
-    <ul>
-      {props.character.abilities.map(ability => (
-        <li key={ability.ability.name}>{ability.ability.name}</li>
-      ))}
-    </ul>
-    <h2>Stats</h2>
-    <ul>
-      {props.character.stats.map(stat => (
-        
-        <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat} <div className="stat_bar" style={{width:`${stat.base_stat}.px`, background:"black"}}> | </div></li>
-      ))}
-    </ul>
-  </div>
+    { props.character.abilities ?
+    <div className="abilities">
+      <h2>Abilities</h2>
+      <ol>
+        {props.character.abilities.map(ability => (
+          <li key={ability.ability.name}>{ability.ability.name}</li>
+        ))}
+      </ol>
+    </div> :
+      ""
+    }
+    
+    { props.character.moves ?
+    <div className="moves">
+      <h2>Moves</h2>
+      <ul style={ {padding:"0"} } className="moves-list">
+        {props.character.moves.map(move => (
+          <li key={move.move.name}>{move.move.name}</li>
+        ))}
+      </ul>
+    </div> :
+     ""
+    }
+
+    { props.character.stats ? 
+    <div className="stats">
+      <h2>Stats</h2>
+      <ul style={ {padding:"0"} }>
+        {props.character.stats.map(stat => (
+          
+          <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat} <div className="stat_bar" style={{width:`${stat.base_stat}.px`, background:"black"}}> | </div></li>
+        ))}
+      </ul>
+    </div> :
+     "Pokemon Not Found! Please try another Pokemon name or number between 1-802"
+    }
+  </div> 
 
   class Guesser extends React.Component {
     constructor(props) {
@@ -102,12 +134,12 @@ class Pager extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+ 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
   handleSubmit(event) {
-    alert('A Pokemon was submitted: ' + this.state.value);
     event.preventDefault();
     this.setState({index:this.state.value})
   }
@@ -117,49 +149,50 @@ class Pager extends React.Component {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   }
-
-   componentDidMount() {
-    this.setState({index: this.getRandom(1,151)})
-  }
+ // This loaded in a random pokemon once page loaded, but pikachu always flashes
+  //  componentDidMount() {
+  //   this.setState({index: this.getRandom(1,151)})
+  // }
   
   render() {
     return (
-      <div>
+      <div className="main">
         {this.props.render(this.state.index)}
+        <div className="search-component">
+          <button
+            type="button"
+            onClick={() =>
+              this.setState(({ index }) => ({
+                index: index - 1
+              }))}
+          >
+            Previous
+          </button>
 
-        <button
-          type="button"
-          onClick={() =>
-            this.setState(({ index }) => ({
-              index: index - 1
-            }))}
-        >
-          Previous
-        </button>
+          <button
+            type="button"
+            onClick={() =>
+              this.setState(({ index }) => ({
+                index: index + 1
+              }))}
+          >
+            Next
+          </button>
 
-        <button
-          type="button"
-          onClick={() =>
-            this.setState(({ index }) => ({
-              index: index + 1
-            }))}
-        >
-          Next
-        </button>
-
-        <button
-          type="button"
-          onClick={() =>
-            this.setState(({ index }) => ({
-              index: this.getRandom(1,151)
-            }))}
-        >
-          RANDOM
-        </button>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
-          <input type="submit" value="Submit"/>
-        </form>
+          <button
+            type="button"
+            onClick={() =>
+              this.setState(({ index }) => ({
+                index: this.getRandom(1,802)
+              }))}
+          >
+            RANDOM
+          </button>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>
       </div>
     );
   }

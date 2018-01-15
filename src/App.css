@@ -3,8 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 3%;
 }
-
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -28,4 +29,43 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+
+.pokemon-header {
+  background:rgba(156,189,15,.9);
+}
+
+.abilities {
+  border: 2px dotted purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3% 0;
+}
+
+.abilities > ol > li {
+  text-align: left;
+}
+
+.moves {
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  margin: 3% 0;
+}
+.stats {
+  background: lightcyan;
+  border: 1px solid cyan;
+  margin: 3% 0;
+}
+
+.stats > ul > li {
+  text-align: left;
+  list-style: none;
+}
+
+.search-component {
+  border: 1px solid goldenrod;
+  padding: 5%;
+  background: lightgoldenrodyellow;
+  margin: 3% 0;
 }
