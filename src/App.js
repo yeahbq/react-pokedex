@@ -6,7 +6,7 @@ import './App.css';
 class FetchPokemon extends React.Component {
   state = { 
           character: null,
-          id: '' 
+          id: '',
           };
 
   setCharacter = id =>
@@ -46,6 +46,13 @@ const Pokemon = props =>
     <ul>
       {props.character.abilities.map(ability => (
         <li key={ability.ability.name}>{ability.ability.name}</li>
+      ))}
+    </ul>
+    <h2>Stats</h2>
+    <ul>
+      {props.character.stats.map(stat => (
+        
+        <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat} <div className="stat_bar" style={{width:`${stat.base_stat}.px`, background:"black"}}> | </div></li>
       ))}
     </ul>
   </div>
