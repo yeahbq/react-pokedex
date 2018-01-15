@@ -57,13 +57,69 @@ const Pokemon = props =>
     </ul>
   </div>
 
+  class Guesser extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value:''};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+      alert('A Pokemon was submitted: ' + this.state.value);
+      event.preventDefault();
+      this.setState({index:this.state.value})
+    }
+
+    render() {
+      return (
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>
+      )
+    }
+  }
+
+
 class Pager extends React.Component {
-  state = { index: 130 };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      index:"pikachu",
+      value:''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A Pokemon was submitted: ' + this.state.value);
+    event.preventDefault();
+    this.setState({index:this.state.value})
+  }
 
   getRandom = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+   componentDidMount() {
+    this.setState({index: this.getRandom(1,151)})
   }
   
   render() {
@@ -100,6 +156,10 @@ class Pager extends React.Component {
         >
           RANDOM
         </button>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
+          <input type="submit" value="Submit"/>
+        </form>
       </div>
     );
   }
@@ -117,6 +177,7 @@ class App extends Component {
               id={id}
               render={character =>
                 <Pokemon character={character} />
+                
               }
             />
           }
