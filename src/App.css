@@ -32,9 +32,26 @@
 } */
 
 .pokemon-header {
-  background:rgba(156,189,15,.9);
+
+  background: url(./assets/pokemon-border.png);
+  background-repeat: no-repeat;
+  width: 256px;
+  height: 224px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.pokemon-content {
+  background:rgba(156,189,15,.9);
+  height: 145px;
+  width: 160px;
+}
+
+.pokeImg {
+  image-rendering: pixelated;
+}
 .abilities {
   border: 2px dotted purple;
   display: flex;

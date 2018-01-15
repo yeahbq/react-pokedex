@@ -40,16 +40,27 @@ class FetchPokemon extends React.Component {
 const Pokemon = props =>
   <div className="poke-info">
     <div className="pokemon-header">
-      <h1>{props.character.name}</h1>
+      <div className="pokemon-content">
+      <p>#{props.character.id} {props.character.name}</p>
+
       { props.character.sprites ?
       <img className="pokeImg" 
         src={props.character.sprites.front_default}
-        width={96}
-        height={96}
-        alt={"Pokemon not found"}/> :
+        alt={"Poke-image not found"}/> :
        <div> "Sorry"</div>
       }
+      </div>
     </div>
+
+      { props.character.types ? 
+      <div className="typing">
+        <h2>Type</h2>
+        <p>{props.character.types.map(element=> (
+        `${element.type.name} `
+      ))}</p>
+      </div> :
+      ""
+      }
 
     { props.character.abilities ?
     <div className="abilities">
@@ -89,45 +100,15 @@ const Pokemon = props =>
     }
   </div> 
 
-  class Guesser extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value:''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-      alert('A Pokemon was submitted: ' + this.state.value);
-      event.preventDefault();
-      this.setState({index:this.state.value})
-    }
-
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
-            <input type="submit" value="Submit"/>
-          </form>
-        </div>
-      )
-    }
-  }
-
-
 class Pager extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       index:"pikachu",
-      value:''
+      value:'',
+      character: this.props.character
+
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -176,7 +157,7 @@ class Pager extends React.Component {
                 index: index + 1
               }))}
           >
-            Next
+            Next {this.props.character}
           </button>
 
           <button
@@ -207,7 +188,7 @@ class App extends Component {
         <Pager
           render={id =>
             <FetchPokemon
-              id={id}
+              id={id} 
               render={character =>
                 <Pokemon character={character} />
                 
