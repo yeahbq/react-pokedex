@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import missingno from './assets/missingno.png'
 // import Pokemon from './components/Pokemon'
 // import PokemonPager from './components/PokemonPager'
 
@@ -41,13 +42,19 @@ const Pokemon = props =>
   <div className="poke-info">
     <div className="pokemon-header">
       <div className="pokemon-content">
-      <p>#{props.character.id} {props.character.name}</p>
+
+      { props.character.id ?
+      <p>#{props.character.id} {props.character.name}</p> :
+      "??? Pokémon"
+      }
 
       { props.character.sprites ?
       <img className="pokeImg" 
         src={props.character.sprites.front_default}
         alt={"Poke-image not found"}/> :
-       <div> "Sorry"</div>
+        <img className="pokeImg" 
+        src={missingno}
+        alt={"Poke-image not found"}/>
       }
       </div>
     </div>
