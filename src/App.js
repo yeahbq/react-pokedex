@@ -54,6 +54,8 @@ const Pokemon = props =>
         alt={"Poke-image not found"}/> :
         <img className="pokeImg" 
         src={missingno}
+        height={'100px'}
+        width={'100px'}
         alt={"Poke-image not found"}/>
       }
       </div>
