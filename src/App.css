@@ -1,42 +1,36 @@
 .App {
   text-align: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 3%;
-}
-/*
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.main {
+  width: 100%;
 }
 
-.App-title {
-  font-size: 1.5em;
+.poke-info {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.App-intro {
-  font-size: large;
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
 
 .pokemon-header {
-
   background: url(./assets/pokemon-border.png);
   background-repeat: no-repeat;
-  width: 256px;
   height: 224px;
+  width: 100%;
+  height: 225px;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,13 +46,20 @@
 .pokeImg {
   image-rendering: pixelated;
 }
+
+.typing-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .abilities {
   border: 2px dotted purple;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 3% 0;
-}
+  align-items: center;}
 
 .abilities > ol > li {
   text-align: left;
@@ -67,12 +68,11 @@
 .moves {
   background: #fafafa;
   border: 1px solid #eeeeee;
-  margin: 3% 0;
 }
+
 .stats {
   background: lightcyan;
   border: 1px solid cyan;
-  margin: 3% 0;
 }
 
 .stats > ul > li {
@@ -84,5 +84,52 @@
   border: 1px solid goldenrod;
   padding: 5%;
   background: lightgoldenrodyellow;
-  margin: 3% 0;
+}
+
+/* Responsive Design Starts Here */
+
+/* Mobile Styles */
+@media only screen and (max-width: 450px) {
+  body {
+    background-color: lightskyblue;
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 451px) and (max-width: 960px){
+  body {
+    background: yellow;
+  }
+
+  .typing, 
+  .abilities,
+  .moves, 
+  .stats {
+    width: 47.5%;
+  }
+
+  .poke-info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  body {
+    background: #fafafa;
+  }
+  
+  .typing,
+  .abilities, 
+  .stats {
+    width: 33.2%;
+  }
+
+  .moves {
+    order: 10;
+  }
 }

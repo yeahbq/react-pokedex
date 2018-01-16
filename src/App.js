@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Pokemon-Types.css';
 import missingno from './assets/missingno.png'
+var Pokedex = require('pokeapi-js-wrapper');
+var options = {
+  protocol: 'https',
+  // hostName: 'localhost:443',
+  versionPath: '/api/v2/',
+  cache: true,
+  timeout: 5 * 1000 // 5s
+}
+var P = new Pokedex.Pokedex(options);
+// var P = new Pokedex.Pokedex();
+
 // import Pokemon from './components/Pokemon'
 // import PokemonPager from './components/PokemonPager'
 
@@ -40,7 +52,7 @@ class FetchPokemon extends React.Component {
 
 const Pokemon = props =>
   <div className="poke-info">
-    <div className="pokemon-header">
+    <div className="pokemon-header section">
       <div className="pokemon-content">
 
       { props.character.id ?
@@ -62,17 +74,19 @@ const Pokemon = props =>
     </div>
 
       { props.character.types ? 
-      <div className="typing">
-        <h2>Type</h2>
-        <p>{props.character.types.map(element=> (
-        `${element.type.name} `
-      ))}</p>
+      <div className="typing section">
+        <div className="typing-content">
+          <h2 style={{width:"100%"}}>Type</h2>
+          {props.character.types.map(element=> (
+          <div className={`${element.type.name}-type all-types`} >{element.type.name + " "} </div>
+        ))}
+        </div>
       </div> :
       ""
       }
 
     { props.character.abilities ?
-    <div className="abilities">
+    <div className="abilities section">
       <h2>Abilities</h2>
       <ol>
         {props.character.abilities.map(ability => (
@@ -84,7 +98,7 @@ const Pokemon = props =>
     }
     
     { props.character.moves ?
-    <div className="moves">
+    <div className="moves section">
       <h2>Moves</h2>
       <ul style={ {padding:"0"} } className="moves-list">
         {props.character.moves.map(move => (
@@ -96,7 +110,7 @@ const Pokemon = props =>
     }
 
     { props.character.stats ? 
-    <div className="stats">
+    <div className="stats section">
       <h2>Stats</h2>
       <ul style={ {padding:"0"} }>
         {props.character.stats.map(stat => (
@@ -178,6 +192,17 @@ class Pager extends React.Component {
           >
             RANDOM
           </button>
+
+          <button type="button"
+            onClick={() =>
+              P.getBerryByName('cheri')
+              .then(function(response) {
+                console.log(response);
+              })
+            }
+          >
+              TEST THIS!
+            </button>
           <form onSubmit={this.handleSubmit}>
             <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
             <input type="submit" value="Submit"/>

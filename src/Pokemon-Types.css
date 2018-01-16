@@ -1,0 +1,36 @@
+.all-types {
+    padding: 5%;
+    border-radius: 8px;
+    border: 1px solid #eeeeee;
+    margin: 3%;
+    width: 75px;
+    color: #fafafa;
+}
+
+.electric-type {
+    background: gold;
+}
+
+.flying-type {
+    background: brown;
+}
+
+.fairy-type {
+    background: pink;
+}
+
+.water-type {
+    background: blue;
+}
+
+.grass-type {
+    background: green;
+}
+
+.fire-type {
+    background: orange;
+}
+
+.dark-type {
+    background: #757575;
+}
