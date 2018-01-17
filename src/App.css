@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Pokemon-GB";
+  src:url('/assets/fonts/Pokemon-GB.ttf');
+}
+
 .App {
   text-align: center;
   display: flex;

@@ -5,6 +5,7 @@
     margin: 3%;
     width: 75px;
     color: #fafafa;
+    font-family: "Pokemon-GB"
 }
 
 .electric-type {
@@ -33,4 +34,16 @@
 
 .dark-type {
     background: #757575;
+}
+
+.normal-type {
+    background: lightgray;
+}
+
+.poison-type {
+    background: #95479B;
+}
+
+.ghost-type {
+    background: #6C5A94;
 }
