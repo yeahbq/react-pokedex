@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import './Pokemon-Types.css';
 import missingno from './assets/missingno.png'
-var Pokedex = require('pokeapi-js-wrapper');
-var options = {
-  protocol: 'https',
-  // hostName: 'localhost:443',
-  versionPath: '/api/v2/',
-  cache: true,
-  timeout: 5 * 1000 // 5s
-}
-var P = new Pokedex.Pokedex(options);
+
+// poke api js wrapper throws error when trying to precompile
+// var Pokedex = values;
+// var options = {
+//   protocol: 'https',
+//   // hostName: 'localhost:443',
+//   versionPath: '/api/v2/',
+//   cache: true,
+//   timeout: 5 * 1000 // 5s
+// }
+// var P = new Pokedex.Pokedex(options);
 // var P = new Pokedex.Pokedex();
 
 // import Pokemon from './components/Pokemon'
@@ -193,7 +195,7 @@ class Pager extends React.Component {
             RANDOM
           </button>
 
-          <button type="button"
+          {/* <button type="button"
             onClick={() =>
               P.getBerryByName('cheri')
               .then(function(response) {
@@ -202,7 +204,7 @@ class Pager extends React.Component {
             }
           >
               TEST THIS!
-            </button>
+            </button> */}
           <form onSubmit={this.handleSubmit}>
             <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
             <input type="submit" value="Submit"/>
