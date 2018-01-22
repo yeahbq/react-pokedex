@@ -81,9 +81,20 @@ const Pokemon = props =>
               }
             </div>
             :
-            <img className="pokeImg" 
-            src={missingno}
-            alt={"Poke-image not found"}/>
+            <div style={ {display:"flex", flexDirection:"column", alignItems:"baseline", justifyContent:"flex-start"} }>
+              <img className="pokeImg" 
+              src={missingno}
+              alt={"Poke-image not found"}/>
+              <p className="poke-num">No.???</p>
+
+              <div className="typing section">
+                <div className="typing-content">
+                  <h2 style={{width:"100%"}}>Type</h2>
+                  ???
+                </div>
+              </div>
+            </div>
+            
           }
 
           { props.character.id ?
@@ -198,7 +209,7 @@ class Pager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({index:this.state.value})
+    this.setState({index:this.state.value.toLowerCase()})
   }
 
   getRandom = (min, max) => {
