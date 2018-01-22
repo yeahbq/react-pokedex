@@ -83,8 +83,6 @@ const Pokemon = props =>
             :
             <img className="pokeImg" 
             src={missingno}
-            height={'100px'}
-            width={'100px'}
             alt={"Poke-image not found"}/>
           }
 
@@ -94,7 +92,7 @@ const Pokemon = props =>
               <p className="poke-name">{props.character.name}</p> 
               <p className="poke-height">HT {props.character.height / 10}m</p>
               <p className="poke-weight">WT {props.character.weight / 10}kg</p>
-              </div>
+            </div>
               
               { props.character.abilities ?
                 <div className="abilities section">
@@ -109,7 +107,15 @@ const Pokemon = props =>
                 }
               
             </div> :
-          "??? Pokémon"
+          <div className="poke-vitals">
+            <div>
+              <p className="poke-name">MissingNo.</p> 
+              <p className="poke-height">HT ???m</p>
+              <p className="poke-weight">WT ???kg</p>
+            </div>
+            `??? Pokémon Not Found! Please try another Pokemon name or number between 1-802`
+          </div>
+   
           }
           
           </div>
@@ -164,7 +170,7 @@ const Pokemon = props =>
         ))}
       </ul>
     </div> :
-     "Pokemon Not Found! Please try another Pokemon name or number between 1-802"
+     ""
     }
   </div> 
 
@@ -176,7 +182,8 @@ class Pager extends React.Component {
     this.state = {
       index:"pikachu",
       value:'',
-      character: this.props.character
+      character: this.props.character,
+      id:""
 
     };
 
@@ -319,11 +326,6 @@ componentWillReceiveProps(nextProps) {
           }
         />
       </div>
-
-      // <div className="App">
-      //   <Search character={this.state.character} id={this.state.id}/>
-      //   {/* <Pokemon character={this.state.character} /> */}
-      // </div>
     );
   }
 }

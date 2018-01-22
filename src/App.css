@@ -81,7 +81,7 @@ width: 800px;
 .pokemon-content {
   background:rgba(156,189,15,.9);
   background-clip: content-box;
-  padding: 9.4% 18.7%;
+  padding: 9.2% 18.7%;
   height: -webkit-fill-available;
   width: -webkit-fill-available;
   display: flex;
@@ -93,7 +93,7 @@ width: 800px;
 }
 
 .typing {
-  border: 1px dashed salmon;
+  /* border: 1px dashed salmon; */
 }
 
 .typing-content {
@@ -105,7 +105,7 @@ width: 800px;
 }
 
 .abilities {
-  border: 2px dotted purple;
+  /* border: 2px dotted purple; */
   display: flex;
   flex-direction: column;
   align-items: center;}
@@ -116,7 +116,7 @@ width: 800px;
 
 .moves {
   background: #fafafa;
-  border: 1px solid #eeeeee;
+  /* border: 1px solid #eeeeee; */
 }
 
 .stats {
@@ -131,7 +131,7 @@ width: 800px;
 
 .search-component {
   border: 1px solid goldenrod;
-  padding: 5%;
+  padding: 5% 0;
   background: lightgoldenrodyellow;
 }
 
@@ -160,7 +160,7 @@ width: 800px;
   }
 
   .pokemon-content {
-    padding: 8.2% 18.7%;
+    padding: 8% 18.7%;
   }
 
   .typing-content > h2, .abilities > h2 {
@@ -200,6 +200,13 @@ width: 800px;
   body {
     background: #fafafa;
   }
+
+  .main {
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   /* .typing,
   .abilities, 
@@ -207,7 +214,9 @@ width: 800px;
     width: 33.2%;
   } */
 
-
+  .search-component {
+    width: 800px;
+  }
 
  .poke-vitals {
    display: flex;
