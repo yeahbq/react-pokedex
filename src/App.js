@@ -54,28 +54,70 @@ class FetchPokemon extends React.Component {
 
 const Pokemon = props =>
   <div className="poke-info">
+
     <div className="pokemon-header section">
-      <div className="pokemon-content">
+      <div className="pokemon-pokedex">
+        <div className="pokemon-border">
+        
+          <div className="pokemon-content">
 
-      { props.character.id ?
-      <p>#{props.character.id} {props.character.name}</p> :
-      "??? Pokémon"
-      }
+          { props.character.sprites ?
+          <div style={ {display:"flex", flexDirection:"column", alignItems:"baseline", justifyContent:"flex-start"} }>
+            <img className="pokeImg" 
+              src={props.character.sprites.front_default}
+              alt={"Poke-image not found"}/> 
+            <p className="poke-num">No.{props.character.id}</p>
 
-      { props.character.sprites ?
-      <img className="pokeImg" 
-        src={props.character.sprites.front_default}
-        alt={"Poke-image not found"}/> :
-        <img className="pokeImg" 
-        src={missingno}
-        height={'100px'}
-        width={'100px'}
-        alt={"Poke-image not found"}/>
-      }
+            { props.character.types ? 
+              <div className="typing section">
+                <div className="typing-content">
+                  <h2 style={{width:"100%"}}>Type</h2>
+                  {props.character.types.map(element=> (
+                  <div className={`${element.type.name}-type all-types`} >{element.type.name + " "} </div>
+                ))}
+                </div>
+              </div> :
+              ""
+              }
+            </div>
+            :
+            <img className="pokeImg" 
+            src={missingno}
+            height={'100px'}
+            width={'100px'}
+            alt={"Poke-image not found"}/>
+          }
+
+          { props.character.id ?
+            <div className="poke-vitals">
+              <div>
+              <p className="poke-name">{props.character.name}</p> 
+              <p className="poke-height">HT {props.character.height / 10}m</p>
+              <p className="poke-weight">WT {props.character.weight / 10}kg</p>
+              </div>
+              
+              { props.character.abilities ?
+                <div className="abilities section">
+                  <h2>Abilities</h2>
+                  <ol>
+                    {props.character.abilities.map(ability => (
+                      <li key={ability.ability.name}>{ability.ability.name}</li>
+                    ))}
+                  </ol>
+                </div> :
+                  ""
+                }
+              
+            </div> :
+          "??? Pokémon"
+          }
+          
+          </div>
+        </div>
       </div>
     </div>
 
-      { props.character.types ? 
+      {/* { props.character.types ? 
       <div className="typing section">
         <div className="typing-content">
           <h2 style={{width:"100%"}}>Type</h2>
@@ -97,9 +139,10 @@ const Pokemon = props =>
       </ol>
     </div> :
       ""
-    }
+    } */}
     
-    { props.character.moves ?
+
+    {/* { props.character.moves ?
     <div className="moves section">
       <h2>Moves</h2>
       <ul style={ {padding:"0"} } className="moves-list">
@@ -109,7 +152,7 @@ const Pokemon = props =>
       </ul>
     </div> :
      ""
-    }
+    } */}
 
     { props.character.stats ? 
     <div className="stats section">
@@ -124,6 +167,7 @@ const Pokemon = props =>
      "Pokemon Not Found! Please try another Pokemon name or number between 1-802"
     }
   </div> 
+
 
 class Pager extends React.Component {
   constructor(props) {
@@ -163,7 +207,6 @@ class Pager extends React.Component {
   render() {
     return (
       <div className="main">
-        {this.props.render(this.state.index)}
         <div className="search-component">
           <button
             type="button"
@@ -210,14 +253,57 @@ class Pager extends React.Component {
             <input type="submit" value="Submit"/>
           </form>
         </div>
+        {this.props.render(this.state.index)}
       </div>
     );
   }
 }
 
+
+
 const ShowId = props => <h1>{props.id}</h1>
 
 class App extends Component {
+  constructor() {
+    super();
+
+    // Get Initial State
+    this.state = {
+      character: null,
+      id: 26,
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({index:this.state.value})
+  }
+
+  setCharacter = id =>
+  fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${id}/`)
+    .then(res => res.json())
+    .catch(error => {
+      console.error('Error:', error)
+      return;
+    })
+    .then(json => this.setState({ character: json }));
+
+
+
+componentDidMount() {
+  this.setCharacter(this.props.id)
+}
+
+componentWillReceiveProps(nextProps) {
+  this.setCharacter(nextProps.id)
+}
+
   render() {
     return (
       <div className="App">
@@ -233,6 +319,11 @@ class App extends Component {
           }
         />
       </div>
+
+      // <div className="App">
+      //   <Search character={this.state.character} id={this.state.id}/>
+      //   {/* <Pokemon character={this.state.character} /> */}
+      // </div>
     );
   }
 }
