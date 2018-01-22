@@ -9,6 +9,11 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background: burlywood;
+}
+
+.header, .footer {
+  color: white;
 }
 
 .main {
@@ -202,7 +207,7 @@ width: 800px;
   }
 
   .main {
-    padding: 5%;
+    padding: 0 5%;
     display: flex;
     flex-direction: column;
     align-items: center;

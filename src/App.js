@@ -270,6 +270,17 @@ class Pager extends React.Component {
 
 const ShowId = props => <h1>{props.id}</h1>
 
+const Header = () => 
+<div className="header">
+  <h1>React Pokedex</h1>
+</div>
+
+const Footer = () => 
+<div className="footer">
+  <p>Pokemon Pokedex made with React, using PokeApi</p>
+  <p>Barrett Quan 2018</p>
+</div>
+
 class App extends Component {
   constructor() {
     super();
@@ -314,6 +325,7 @@ componentWillReceiveProps(nextProps) {
   render() {
     return (
       <div className="App">
+        <Header/>
         <Pager
           render={id =>
             <FetchPokemon
@@ -325,6 +337,7 @@ componentWillReceiveProps(nextProps) {
             />
           }
         />
+        <Footer/>
       </div>
     );
   }
