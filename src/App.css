@@ -18,6 +18,8 @@
 .poke-info {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section {
@@ -29,14 +31,18 @@
   flex-direction: column;
 }
 
-.pokemon-pokedex {
+/* .pokemon-pokedex {
   height: 300px;
   width: 400px;
+} */
+
+.pokemon-pokedex {
+height: 600px;
+width: 800px;
 }
 
 .pokemon-header {
-  width: 100%;
-
+  /* width: 100%; */
   display: flex;
   font-family: "Pokemon-GB";
 }
@@ -44,8 +50,8 @@
 .pokemon-border {
   background: url(./assets/pokemon-border.png);
   background-size: cover;
-  height: 100%;
-  width: 100%;
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
   image-rendering: pixelated;
   background-position: center;
   flex-direction: column;
@@ -54,22 +60,28 @@
 }
 
 .poke-num {
-  font-size: 10px;
+  font-size: 20px;
+  margin: 10%;
 }
 
 .poke-name {
   text-transform: uppercase;
 }
 
+
+.poke-vitals {
+  margin: 5% 3%;
+}
 .poke-name,
 .poke-height,
 .poke-weight {
   text-align: left;
+  font-size: 25px;
 }
 .pokemon-content {
   background:rgba(156,189,15,.9);
   background-clip: content-box;
-  padding: 8.75% 18.5%;
+  padding: 9.4% 18.7%;
   height: -webkit-fill-available;
   width: -webkit-fill-available;
   display: flex;
@@ -77,6 +89,11 @@
 
 .pokeImg {
   image-rendering: pixelated;
+  height: 45%;
+}
+
+.typing {
+  border: 1px dashed salmon;
 }
 
 .typing-content {
@@ -125,6 +142,35 @@
   body {
     background-color: lightskyblue;
   }
+
+  .pokemon-pokedex {
+  height: 300px;
+  width: -webkit-fill-available;
+}
+
+  .poke-name,
+  .poke-height,
+  .poke-weight {
+    text-align: left;
+    font-size: inherit;
+  }
+
+  .poke-num {
+    font-size: small;
+  }
+
+  .pokemon-content {
+    padding: 8.2% 18.7%;
+  }
+
+  .typing-content > h2, .abilities > h2 {
+    font-size: small;
+  }
+
+  .abilities > ol > li {
+    font-size: xx-small;
+  }
+
 }
 
 /* Tablet Styles */
@@ -155,12 +201,23 @@
     background: #fafafa;
   }
   
-  .typing,
+  /* .typing,
   .abilities, 
   .stats {
     width: 33.2%;
-  }
+  } */
 
+
+
+ .poke-vitals {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+ }
+
+ .abilities > ol {
+   margin-left: 50px;
+ }
   .moves {
     order: 10;
   }
