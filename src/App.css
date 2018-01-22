@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Pokemon-GB";
-  src:url('./assets/fonts/Pokemon-GB.ttf');
+  src:url('/assets/fonts/Pokemon-GB.ttf');
 }
 
 .App {
@@ -29,50 +29,23 @@
   flex-direction: column;
 }
 
-.pokemon-pokedex {
-  height: 300px;
-  width: 400px;
-}
-
 .pokemon-header {
-  width: 100%;
-
-  display: flex;
-  font-family: "Pokemon-GB";
-}
-
-.pokemon-border {
   background: url(./assets/pokemon-border.png);
-  background-size: cover;
-  height: 100%;
+  background-repeat: no-repeat;
+  height: 224px;
   width: 100%;
-  image-rendering: pixelated;
+  height: 225px;
   background-position: center;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.poke-num {
-  font-size: 10px;
-}
-
-.poke-name {
-  text-transform: uppercase;
-}
-
-.poke-name,
-.poke-height,
-.poke-weight {
-  text-align: left;
-}
 .pokemon-content {
   background:rgba(156,189,15,.9);
-  background-clip: content-box;
-  padding: 8.75% 18.5%;
-  height: -webkit-fill-available;
-  width: -webkit-fill-available;
-  display: flex;
+  height: 145px;
+  width: 160px;
 }
 
 .pokeImg {

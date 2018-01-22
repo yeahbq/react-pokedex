@@ -54,39 +54,24 @@ class FetchPokemon extends React.Component {
 
 const Pokemon = props =>
   <div className="poke-info">
-
     <div className="pokemon-header section">
-      <div className="pokemon-pokedex">
-        <div className="pokemon-border">
-        
-          <div className="pokemon-content">
+      <div className="pokemon-content">
 
-          { props.character.sprites ?
-          <div style={ {display:"flex", flexDirection:"column", alignItems:"baseline"} }>
-            <img className="pokeImg" 
-              src={props.character.sprites.front_default}
-              alt={"Poke-image not found"}/> 
-            <p className="poke-num">No.{props.character.id}</p> 
-            </div>
-            :
-            <img className="pokeImg" 
-            src={missingno}
-            height={'100px'}
-            width={'100px'}
-            alt={"Poke-image not found"}/>
-          }
+      { props.character.id ?
+      <p>#{props.character.id} {props.character.name}</p> :
+      "??? Pokémon"
+      }
 
-          { props.character.id ?
-            <div>
-              <p className="poke-name">{props.character.name}</p> 
-              <p className="poke-height">HT {props.character.height / 10}m</p>
-              <p className="poke-weight">HT {props.character.weight / 10}kg</p>
-            </div> :
-          "??? Pokémon"
-          }
-
-          </div>
-        </div>
+      { props.character.sprites ?
+      <img className="pokeImg" 
+        src={props.character.sprites.front_default}
+        alt={"Poke-image not found"}/> :
+        <img className="pokeImg" 
+        src={missingno}
+        height={'100px'}
+        width={'100px'}
+        alt={"Poke-image not found"}/>
+      }
       </div>
     </div>
 

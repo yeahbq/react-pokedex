@@ -1,17 +1,11 @@
 .all-types {
     padding: 5%;
-    border-radius: 3px;
+    border-radius: 8px;
+    border: 1px solid #eeeeee;
     margin: 3%;
+    width: 75px;
     color: #fafafa;
-    font-family: "Pokemon-GB";
-    font-size: 12px;
-    width: 95px;
-    color: white;
-    text-shadow:
-        1px 1px 1px #7F7871;
-    text-transform: uppercase;
-    box-shadow: 
-        1px 1px 1px #7F7871;
+    font-family: "Pokemon-GB"
 }
 
 .electric-type {
@@ -19,7 +13,7 @@
 }
 
 .flying-type {
-    background: #A492EA;
+    background: brown;
 }
 
 .fairy-type {
@@ -27,11 +21,11 @@
 }
 
 .water-type {
-    background: #6F90E9;
+    background: blue;
 }
 
 .grass-type {
-    background: #89C560;
+    background: green;
 }
 
 .fire-type {
@@ -39,7 +33,7 @@
 }
 
 .dark-type {
-    background: #6D594A;
+    background: #757575;
 }
 
 .normal-type {
@@ -52,36 +46,4 @@
 
 .ghost-type {
     background: #6C5A94;
-}
-
-.bug-type {
-    background:#AAB742;
-}
-
-.steel-type {
-    background: #B8B8CE;
-}
-
-.ground-type {
-    background:#C4AF73;
-}
-
-.dragon-type {
-    background:#6840EF;
-}
-
-.fighting-type {
-    background:#B23C31;
-}
-
-.ice-type {
-    background:#A4D6D7;
-}
-
-.rock-type {
-    background:#B49F4A;
-}
-
-.psychic-type {
-    background:#E76488;
 }
