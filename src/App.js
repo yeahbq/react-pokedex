@@ -267,8 +267,11 @@ class Pager extends React.Component {
               TEST THIS!
             </button> */}
           <form onSubmit={this.handleSubmit}>
-            <input type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
-            <input type="submit" value="Submit"/>
+            <div className="search-div" style={{display:"flex"}}>
+              <input className="poke-form" type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
+              <div onClick={this.handleSubmit} class="_1miobth"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{height:"24px", width:"24px", display:"block", fill:"#767676", marginRight:"11px"}}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fill-rule="evenodd"></path></svg></div>
+              <input type="submit" value="Submit" style={{display:"none"}}/>
+            </div>
           </form>
         </div>
         {this.props.render(this.state.index)}
@@ -283,7 +286,9 @@ const ShowId = props => <h1>{props.id}</h1>
 
 const Header = () => 
 <div className="header">
-  <h1>React Pokedex</h1>
+  <div className="header-background">
+    <h1>React Pokedex</h1>
+  </div>
 </div>
 
 const Footer = () => 

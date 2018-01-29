@@ -3,23 +3,88 @@
   src:url('./assets/fonts/Pokemon-GB.ttf');
 }
 
+@font-face {
+  font-family: "Roboto";
+  src:url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src:url('./assets/fonts/OpenSans-Regular.ttf');
+}
+
 .App {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: burlywood;
+  background: white;
 }
 
 .header, .footer {
   color: white;
-  background: lightskyblue;
   width: 100%;
+  background:linear-gradient(to top, rgba(84,205,212,.65) 30%, rgba(0,0,0,0) 100%, rgba(0, 0, 0, 0));
+}
+
+.header {
+  background:linear-gradient(to top, rgba(84,205,212,.65) 30%, rgba(0,0,0,0) 100%, rgba(0, 0, 0, 0));
+}
+
+.footer {
+  font-family: "Roboto";
+  font-size: 14px;
+
+}
+
+.footer:nth-last-child() {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: "Open Sans"
+}
+
+.header-background {
+  padding: 20px;
+}
+
+.header-background > h1 {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
 }
 
 .main {
   width: 100%;
+}
+
+.search-div {
+  background: white;
+  border: 1px solid #DBDBDB !important;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin: 5%;
+}
+
+.poke-form {
+    font-size: 19px !important;
+    line-height: 24px !important;
+    letter-spacing: undefined !important;
+    padding: 11px!important;
+    color: #484848 !important;
+    background-color: white !important;
+    border: none!important;
+    border-radius: 3px;
+    width: calc(100% - 23px) !important;
+    font-weight: normal !important;
+    text-overflow: ellipsis !important;
+}
+
+.poke-form:focus{
+  outline: none!important;
 }
 
 .poke-info {
@@ -131,15 +196,24 @@ width: 800px;
   border: 1px solid cyan;
 }
 
+.stats > h2 {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
 .stats > ul > li {
   text-align: left;
   list-style: none;
+  font-family:"Open Sans";
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .search-component {
   border: 1px solid goldenrod;
   padding: 5% 0;
-  background: lightgoldenrodyellow;
+  background: white;
 }
 
 /* Responsive Design Starts Here */
