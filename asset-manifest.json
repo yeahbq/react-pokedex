@@ -1,7 +1,9 @@
 {
-  "main.css": "static/css/main.72ba36a7.css",
-  "main.css.map": "static/css/main.72ba36a7.css.map",
-  "main.js": "static/js/main.eafbb1eb.js",
-  "main.js.map": "static/js/main.eafbb1eb.js.map",
-  "static/media/Pokemon-GB.ttf": "static/media/Pokemon-GB.831e1f4d.ttf"
+  "main.css": "static/css/main.54a6ccc9.css",
+  "main.css.map": "static/css/main.54a6ccc9.css.map",
+  "main.js": "static/js/main.4c10fb12.js",
+  "main.js.map": "static/js/main.4c10fb12.js.map",
+  "static/media/OpenSans-Regular.ttf": "static/media/OpenSans-Regular.d7d5d458.ttf",
+  "static/media/Pokemon-GB.ttf": "static/media/Pokemon-GB.831e1f4d.ttf",
+  "static/media/Roboto-Regular.ttf": "static/media/Roboto-Regular.3e1af3ef.ttf"
 }
