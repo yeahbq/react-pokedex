@@ -156,7 +156,7 @@ class Pager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({index:this.state.value.toLowerCase().replace(/ /g, "").replace(/\./g, '-') })
+    this.setState({index:this.state.value.toLowerCase().replace(/ /g, "-").replace(/\./g, '') })
   }
 
   getRandom = (min, max) => {
