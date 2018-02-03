@@ -149,7 +149,6 @@ class Pager extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
  
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -165,45 +164,27 @@ class Pager extends React.Component {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   }
-  
+
   render() {
     return (
       <div className="main">
         <div className="search-component">
+          
           <button
             type="button"
-            onClick={() =>
-              this.setState(({ index }) => ({
-                index: index - 1
-              }))}
-          >
-            Previous
-          </button>
-
-          <button
-            type="button"
-            onClick={() =>
-              this.setState(({ index }) => ({
-                index: index + 1
-              }))}
-          >
-            Next {this.props.character}
-          </button>
-
-          <button
-            type="button"
+            className="mystery-gift"
             onClick={() =>
               this.setState(({ index }) => ({
                 index: this.getRandom(1,802)
               }))}
           >
-            RANDOM
+            <a>MYSTERY GIFT</a>
           </button>
 
           <form onSubmit={this.handleSubmit}>
             <div className="search-div" style={{display:"flex"}}>
               <input className="poke-form" type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
-              <div onClick={this.handleSubmit} class="_1miobth"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{height:"24px", width:"24px", display:"block", fill:"#767676", marginRight:"11px"}}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fill-rule="evenodd"></path></svg></div>
+              <div onClick={this.handleSubmit} class="_1miobth"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{height:"24px", width:"24px", display:"block", fill:"#767676", marginRight:"11px"}}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fillRule="evenodd"></path></svg></div>
               <input type="submit" value="Submit" style={{display:"none"}}/>
             </div>
           </form>
@@ -228,7 +209,7 @@ const Header = () =>
 const Footer = () => 
 <div className="footer">
   <p>Pokemon Pokedex made with React, using PokeApi</p>
-  <p>Barrett Quan 2018</p>
+  <p><a href="http://barrettquan.com">Barrett Quan 2018</a></p>
 </div>
 
 class App extends Component {
@@ -277,11 +258,11 @@ componentWillReceiveProps(nextProps) {
       <div className="App">
         <Header/>
         <Pager
-          render={id =>
+          render={id => 
             <FetchPokemon
               id={id} 
-              render={character =>
-                <Pokemon character={character} />
+              render={id =>
+                <Pokemon character={id} />
                 
               }
             />

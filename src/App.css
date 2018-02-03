@@ -25,17 +25,12 @@
 .header, .footer {
   color: white;
   width: 100%;
-  background:linear-gradient(to top, rgba(84,205,212,.65) 30%, rgba(0,0,0,0) 100%, rgba(0, 0, 0, 0));
-}
-
-.header {
-  background:linear-gradient(to top, rgba(84,205,212,.65) 30%, rgba(0,0,0,0) 100%, rgba(0, 0, 0, 0));
+  background:rgba(84,205,212,.65);
 }
 
 .footer {
   font-family: "Roboto";
   font-size: 14px;
-
 }
 
 .footer:nth-last-child() {
@@ -59,6 +54,10 @@
   width: 100%;
 }
 
+.search-component, .poke-header, .stats {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .search-div {
   background: white;
   border: 1px solid #DBDBDB !important;
@@ -68,6 +67,20 @@
   border-radius: 3px;
   margin: 5%;
 }
+
+.mystery-gift {
+  height: 50px;
+  width: 200px;
+  background:rgb(235, 165, 165);
+  color: white;
+  border: 4px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-family: "Open Sans";
+  letter-spacing: .2em;
+  font-weight: bold;
+}
+
 
 .poke-form {
     font-size: 19px !important;
@@ -81,6 +94,10 @@
     width: calc(100% - 23px) !important;
     font-weight: normal !important;
     text-overflow: ellipsis !important;
+}
+
+.poke-form::placeholder {
+  color: rgb(235, 165, 165);
 }
 
 .poke-form:focus{
@@ -116,8 +133,8 @@ width: 800px;
 .pokemon-border {
   background: url(./assets/pokemon-border.png);
   background-size: cover;
-  height: -webkit-fill-available;
-  width: -webkit-fill-available;
+  height: stretch;
+  width: stretch;
   image-rendering: pixelated;
   background-position: center;
   flex-direction: column;
@@ -181,7 +198,7 @@ width: 800px;
 
 .stats {
   background: lightcyan;
-  border: 1px solid cyan;
+  border: 1px solid rgb(200, 255, 255);
 }
 
 .stats > h2 {
@@ -199,9 +216,9 @@ width: 800px;
 }
 
 .search-component {
-  border: 1px solid goldenrod;
+  border: 1px solid #eeeeee;
   padding: 5% 0;
-  background: white;
+  background: #fafafa;
 }
 
 /* Responsive Design Starts Here */
@@ -244,9 +261,6 @@ width: 800px;
 
 /* Tablet Styles */
 @media only screen and (min-width: 451px) and (max-width: 960px){
-  body {
-    background: yellow;
-  }
 
   .typing, 
   .abilities,
@@ -292,5 +306,17 @@ width: 800px;
  }
   .moves {
     order: 10;
+  }
+
+  .search-component {
+    margin: 1.5% 0;
+  }
+
+  .stats {
+    margin: 3% 0;
+  }
+
+  .search-component, .stats {
+    border-radius: 8px;
   }
 }
