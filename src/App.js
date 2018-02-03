@@ -125,7 +125,7 @@ const Pokemon = props =>
       <ul style={ {padding:"0"} }>
         {props.character.stats.map(stat => (
           
-          <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat} <div className="stat_bar" style={{width:`${stat.base_stat}.px`, background:"black"}}> | </div></li>
+          <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat} <div className="stat-bar" style={{width:`${stat.base_stat}.px`, background:"black"}}> | </div></li>
         ))}
       </ul>
     </div> :
