@@ -3,21 +3,6 @@ import './App.css';
 import './Pokemon-Types.css';
 import missingno from './assets/missingno.png'
 
-// poke api js wrapper throws error when trying to precompile
-// var Pokedex = values;
-// var options = {
-//   protocol: 'https',
-//   // hostName: 'localhost:443',
-//   versionPath: '/api/v2/',
-//   cache: true,
-//   timeout: 5 * 1000 // 5s
-// }
-// var P = new Pokedex.Pokedex(options);
-// var P = new Pokedex.Pokedex();
-
-// import Pokemon from './components/Pokemon'
-// import PokemonPager from './components/PokemonPager'
-
 class FetchPokemon extends React.Component {
   state = { 
           character: null,
@@ -134,43 +119,6 @@ const Pokemon = props =>
       </div>
     </div>
 
-      {/* { props.character.types ? 
-      <div className="typing section">
-        <div className="typing-content">
-          <h2 style={{width:"100%"}}>Type</h2>
-          {props.character.types.map(element=> (
-          <div className={`${element.type.name}-type all-types`} >{element.type.name + " "} </div>
-        ))}
-        </div>
-      </div> :
-      ""
-      }
-
-    { props.character.abilities ?
-    <div className="abilities section">
-      <h2>Abilities</h2>
-      <ol>
-        {props.character.abilities.map(ability => (
-          <li key={ability.ability.name}>{ability.ability.name}</li>
-        ))}
-      </ol>
-    </div> :
-      ""
-    } */}
-    
-
-    {/* { props.character.moves ?
-    <div className="moves section">
-      <h2>Moves</h2>
-      <ul style={ {padding:"0"} } className="moves-list">
-        {props.character.moves.map(move => (
-          <li key={move.move.name}>{move.move.name}</li>
-        ))}
-      </ul>
-    </div> :
-     ""
-    } */}
-
     { props.character.stats ? 
     <div className="stats section">
       <h2>Stats</h2>
@@ -217,10 +165,6 @@ class Pager extends React.Component {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   }
- // This loaded in a random pokemon once page loaded, but pikachu always flashes
-  //  componentDidMount() {
-  //   this.setState({index: this.getRandom(1,151)})
-  // }
   
   render() {
     return (
@@ -256,16 +200,6 @@ class Pager extends React.Component {
             RANDOM
           </button>
 
-          {/* <button type="button"
-            onClick={() =>
-              P.getBerryByName('cheri')
-              .then(function(response) {
-                console.log(response);
-              })
-            }
-          >
-              TEST THIS!
-            </button> */}
           <form onSubmit={this.handleSubmit}>
             <div className="search-div" style={{display:"flex"}}>
               <input className="poke-form" type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
