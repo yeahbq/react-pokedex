@@ -58,7 +58,7 @@ const Pokemon = props =>
                 <div className="typing-content">
                   <h2 style={{width:"100%"}}>Type</h2>
                   {props.character.types.map(element=> (
-                  <div className={`${element.type.name}-type all-types`} >{element.type.name + " "} </div>
+                  <div key={element.type.name} className={`${element.type.name}-type all-types`} >{element.type.name + " "} </div>
                 ))}
                 </div>
               </div> :
@@ -156,7 +156,7 @@ class Pager extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({index:this.state.value.toLowerCase()})
+    this.setState({index:this.state.value.toLowerCase().replace(/ /g, "").replace(/\./g, '-') })
   }
 
   getRandom = (min, max) => {
@@ -184,7 +184,7 @@ class Pager extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="search-div" style={{display:"flex"}}>
               <input className="poke-form" type="text" name="search" placeholder="Search Pokemon" value={this.state.value} onChange={this.handleChange}/>
-              <div onClick={this.handleSubmit} class="_1miobth"><svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{height:"24px", width:"24px", display:"block", fill:"#767676", marginRight:"11px"}}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fillRule="evenodd"></path></svg></div>
+              <div onClick={this.handleSubmit} >  <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{height:"24px", width:"24px", display:"block", fill:"#767676", marginRight:"11px"}}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fillRule="evenodd"></path></svg></div>
               <input type="submit" value="Submit" style={{display:"none"}}/>
             </div>
           </form>
@@ -209,7 +209,7 @@ const Header = () =>
 const Footer = () => 
 <div className="footer">
   <p>Pokemon Pokedex made with React, using PokeApi</p>
-  <p><a href="http://barrettquan.com">Barrett Quan 2018</a></p>
+  <p><a href="http://barrettquan.com">© Barrett Quan 2018</a></p>
 </div>
 
 class App extends Component {
@@ -221,37 +221,8 @@ class App extends Component {
       character: null,
       id: 26,
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({index:this.state.value})
-  }
-
-  setCharacter = id =>
-  fetch(`https://d1s1rehmg7ei44.cloudfront.net/api/v2/pokemon/${id}/`)
-    .then(res => res.json())
-    .catch(error => {
-      console.error('Error:', error)
-      return;
-    })
-    .then(json => this.setState({ character: json }));
-
-
-
-componentDidMount() {
-  this.setCharacter(this.props.id)
-}
-
-componentWillReceiveProps(nextProps) {
-  this.setCharacter(nextProps.id)
-}
 
   render() {
     return (
