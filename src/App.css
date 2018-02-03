@@ -103,18 +103,12 @@
   flex-direction: column;
 }
 
-/* .pokemon-pokedex {
-  height: 300px;
-  width: 400px;
-} */
-
 .pokemon-pokedex {
 height: 600px;
 width: 800px;
 }
 
 .pokemon-header {
-  /* width: 100%; */
   display: flex;
   font-family: "Pokemon-GB";
 }
@@ -164,10 +158,6 @@ width: 800px;
   height: 45%;
 }
 
-.typing {
-  /* border: 1px dashed salmon; */
-}
-
 .typing-content {
   display: flex;
   justify-content: center;
@@ -177,7 +167,6 @@ width: 800px;
 }
 
 .abilities {
-  /* border: 2px dotted purple; */
   display: flex;
   flex-direction: column;
   align-items: center;}
@@ -188,7 +177,6 @@ width: 800px;
 
 .moves {
   background: #fafafa;
-  /* border: 1px solid #eeeeee; */
 }
 
 .stats {
@@ -248,7 +236,7 @@ width: 800px;
     font-size: small;
   }
 
-  .abilities > ol > li {
+  .abilities > ol > li, .poke-error {
     font-size: xx-small;
   }
 
@@ -289,12 +277,6 @@ width: 800px;
     align-items: center;
   }
   
-  /* .typing,
-  .abilities, 
-  .stats {
-    width: 33.2%;
-  } */
-
   .search-component {
     width: 800px;
   }

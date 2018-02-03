@@ -109,7 +109,7 @@ const Pokemon = props =>
               <p className="poke-height">HT ???m</p>
               <p className="poke-weight">WT ???kg</p>
             </div>
-            `??? Pokémon Not Found! Please try another Pokemon name or number between 1-802`
+            <p className="poke-error">`??? Pokémon Not Found! Please try another Pokemon name or number between 1-802`</p>
           </div>
    
           }
