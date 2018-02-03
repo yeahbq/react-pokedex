@@ -240,6 +240,15 @@ width: 800px;
   width: -webkit-fill-available;
 }
 
+.all-types {
+  font-size: 10px;
+  width: 80px;
+}
+
+  .poke-vitals {
+    font-size: x-small;
+  }
+
   .poke-name,
   .poke-height,
   .poke-weight {
@@ -256,11 +265,24 @@ width: 800px;
   }
 
   .typing-content > h2, .abilities > h2 {
-    font-size: small;
+    font-size: x-small;
+  }
+
+  .abilities {
+    margin-top: 25px;
+  align-items: flex-start;
+  }
+
+  .abilities > ol {
+    margin-left: -15px;
   }
 
   .abilities > ol > li, .poke-error {
     font-size: xx-small;
+  }
+
+  .poke-error {
+    margin-top: 45px;
   }
 
 }
