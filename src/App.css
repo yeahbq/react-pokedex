@@ -231,11 +231,7 @@ width: 800px;
 
 /* Mobile Styles */
 @media only screen and (max-width: 450px) {
-  body {
-    background-color: lightskyblue;
-  }
-
-  .pokemon-pokedex {
+.pokemon-pokedex {
   height: 300px;
   width: -webkit-fill-available;
 }
